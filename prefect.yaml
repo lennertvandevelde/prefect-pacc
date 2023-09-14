@@ -1,0 +1,16 @@
+name: pacc-2023
+prefect-version: 2.13.0
+
+pull:
+- prefect.deployments.steps.git_clone:
+    repository: https://github.com/lennertvandevelde/prefect-pacc.git
+    branch: main
+
+deployments:
+
+- name: test1
+  entrypoint: test_flow.py:main_flow
+  work_pool:
+    name: test-pool
+  schedule:
+    interval: 600
